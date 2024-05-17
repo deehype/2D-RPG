@@ -75,7 +75,7 @@ public class StartManager : MonoBehaviour
         ErrorUI.SetActive(true);
         if (PlayerPrefs.GetString("FIND") == FindID.text)
         {
-            ErrorMessage.text = $"ID : {PlayerPrefs.GetString("ID")}\nPV : {PlayerPrefs.GetString("PV")}";
+            ErrorMessage.text = $"ID : {PlayerPrefs.GetString("ID")}\nPV : {PlayerPrefs.GetString("PW")}";
         }
         else
         {
