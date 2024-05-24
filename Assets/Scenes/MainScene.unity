@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 617065708}
   - component: {fileID: 617065712}
   - component: {fileID: 617065711}
+  - component: {fileID: 617065713}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -348,6 +349,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &617065713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617065707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f6d7851adff1647a4362ec47903d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1255451750
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +821,7 @@ GameObject:
   - component: {fileID: 1675372453}
   - component: {fileID: 1675372457}
   - component: {fileID: 1675372456}
+  - component: {fileID: 1675372458}
   m_Layer: 0
   m_Name: Warrior
   m_TagString: Untagged
@@ -975,6 +989,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1675372458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675372452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f6d7851adff1647a4362ec47903d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1732438059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1106,7 @@ GameObject:
   - component: {fileID: 1959580792}
   - component: {fileID: 1959580796}
   - component: {fileID: 1959580795}
+  - component: {fileID: 1959580797}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -1247,6 +1274,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1959580797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959580791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f6d7851adff1647a4362ec47903d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
