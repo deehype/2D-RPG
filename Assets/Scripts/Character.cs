@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
     void Update()
     {
         Move();
+        AttackCheck();
         JumpCheck();
         Jump();
         Attack();
@@ -40,6 +41,7 @@ public class Character : MonoBehaviour
 
     private void FixedUpdate()
     {
+
     }
 
     private void Move()
@@ -110,25 +112,48 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void Attack()
+    private void AttackCheck()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
+            justAttack = true;
+        }
+    }
+
+    private void Attack()
+    {
+        if (justAttack)
+        {
+            justAttack = false;
+
             animator.SetTrigger("Attack");
             audioSource.PlayOneShot(AttackClip);
 
-            if (spriteRenderer.flipX)
+            if (gameObject.name == "Warrior")
             {
-                GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 180f, 0));
-                obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * AttackSpeed, ForceMode2D.Impulse);
-                Destroy(obj, 3f);
+                AttackObj.SetActive(true);
+                Invoke("SetAttackObjInactive", 0.5f);
             }
             else
             {
-                GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 0, 0));
-                obj.GetComponent<Rigidbody2D>().AddForce(Vector2.right * AttackSpeed, ForceMode2D.Impulse);
-                Destroy(obj, 3f);
+                if (spriteRenderer.flipX)
+                {
+                    GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 180f, 0));
+                    obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * AttackSpeed, ForceMode2D.Impulse);
+                    Destroy(obj, 3f);
+                }
+                else
+                {
+                    GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 0, 0));
+                    obj.GetComponent<Rigidbody2D>().AddForce(Vector2.right * AttackSpeed, ForceMode2D.Impulse);
+                    Destroy(obj, 3f);
+                }
             }
         }
+    }
+
+    private void SetAttackObjInactive()
+    {
+        AttackObj.SetActive(false);
     }
 }
