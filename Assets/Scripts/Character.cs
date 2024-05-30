@@ -1,7 +1,9 @@
+using Unity.Jobs;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2d;
@@ -15,6 +17,9 @@ public class Character : MonoBehaviour
     public float JumpPower = 6f;
 
     private bool isFloor;
+    private bool isLadder;
+    private bool isClimbing;
+    private float inputVertical;
 
     public GameObject AttackObj;
     public float AttackSpeed = 3f;
@@ -37,11 +42,51 @@ public class Character : MonoBehaviour
         JumpCheck();
         Jump();
         Attack();
+        ClimbingCheck();
     }
 
     private void FixedUpdate()
     {
+        Climbing();
+    }
 
+    private void ClimbingCheck()
+    {
+        inputVertical = Input.GetAxis("Vertical");
+        if (isLadder && Mathf.Abs(inputVertical) > 0)
+        {
+            isClimbing = true;
+        }
+    }
+
+    private void Climbing()
+    {
+        if (isClimbing)
+        {
+            rigidbody2d.gravityScale = 0f;
+            rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, inputVertical * Speed);
+        }
+        else
+        {
+            rigidbody2d.gravityScale = 1f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ladder")
+        {
+            isLadder = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ladder")
+        {
+            isLadder = false;
+            isClimbing = false;
+        }
     }
 
     private void Move()
@@ -89,6 +134,8 @@ public class Character : MonoBehaviour
         }
     }
 
+
+
     private void JumpCheck()
     {
         if (isFloor)
@@ -129,7 +176,7 @@ public class Character : MonoBehaviour
             animator.SetTrigger("Attack");
             audioSource.PlayOneShot(AttackClip);
 
-            if (gameObject.name == "Warrior")
+            if (gameObject.name == "Warrior(clone)")
             {
                 AttackObj.SetActive(true);
                 Invoke("SetAttackObjInactive", 0.5f);

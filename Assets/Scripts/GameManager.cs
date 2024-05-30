@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -10,7 +8,7 @@ public class GameManager : MonoBehaviour
     public string UserID;
 
     public float PlayerHP = 100f; //체력
-    public float PalyerExp = 1f; //경험치
+    public float PlayerExp = 1f; //경험치
 
     private void Awake()
     {
