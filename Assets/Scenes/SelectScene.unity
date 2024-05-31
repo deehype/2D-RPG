@@ -1566,7 +1566,7 @@ MonoBehaviour:
   CharacterName: 
   UserID: 
   PlayerHP: 100
-  PalyerExp: 1
+  PlayerExp: 1
 --- !u!4 &1362048032
 Transform:
   m_ObjectHideFlags: 0

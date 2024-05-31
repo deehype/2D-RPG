@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public float PlayerHP = 100f; //체력
     public float PlayerExp = 1f; //경험치
+    public int Coin = 0;
 
     private void Awake()
     {
