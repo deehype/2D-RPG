@@ -15,9 +15,12 @@ public class Monster : MonoBehaviour
 
     private Animator MonsterAnimator;
 
+    private int monsterCount = 0; //필드에 있는 몬스터 수
+
     void Start()
     {
         MonsterAnimator = this.GetComponent<Animator>();
+
     }
 
     void Update()
@@ -73,15 +76,38 @@ public class Monster : MonoBehaviour
         GameManager.Instance.PlayerExp += MonsterExp;
 
         GetComponent<Collider2D>().enabled = false;
-        Destroy(gameObject, 1.5f); //Die 애니메이션 재생 시간 보장
+        Invoke("CreateItem", 1.5f);
+
     }
 
-    private void OnDestroy()
+    private void CreateItem()
     {
         int itemRandom = Random.Range(0, ItemObj.Length);
         if (itemRandom < ItemObj.Length)
         {
             Instantiate(ItemObj[itemRandom], new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
         }
+        Destroy(gameObject);
+    }
+
+    // 몬스터가 생성될 때마다 호출되는 함수
+    public void IncrementMonsterCount()
+    {
+        monsterCount++; // 몬스터 수 증가
+        UpdateMonsterCountUI(); // UI 업데이트
+    }
+
+    // 몬스터가 사라질 때마다 호출되는 함수
+    public void DecrementMonsterCount()
+    {
+        monsterCount--; // 몬스터 수 감소
+        UpdateMonsterCountUI(); // UI 업데이트
+    }
+
+    // UI 업데이트 함수
+    void UpdateMonsterCountUI()
+    {
+        Debug.Log(monsterCount);
+        // 여기에 필요한 UI 업데이트 코드를 추가하세요.
     }
 }
