@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.Jobs;
 using UnityEditor.Tilemaps;
@@ -5,7 +6,6 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-
     private Animator animator;
     //private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2d;
@@ -113,14 +113,26 @@ public class Character : MonoBehaviour
         }
     }
 
-        private void Flip()
-        {
-            faceRight = !faceRight;
+    public void IncreaseSpeed(float speedMultiplier, float duration)
+    {
+        StartCoroutine(SpeedBoost(speedMultiplier, duration));
+    }
 
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1;
-            transform.localScale = localScale;
-        }
+    private IEnumerator SpeedBoost(float speedMultiplier, float duration)
+    {
+        Speed *= speedMultiplier;
+        yield return new WaitForSeconds(duration);
+        Speed = Speed;
+    }
+
+    private void Flip()
+    {
+        faceRight = !faceRight;
+
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -137,8 +149,6 @@ public class Character : MonoBehaviour
             isFloor = false;
         }
     }
-
-
 
     private void JumpCheck()
     {

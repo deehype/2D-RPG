@@ -30,7 +30,7 @@ public class StartManager : MonoBehaviour
         PlayerPrefs.SetString("ID", MembershipID.text);
         PlayerPrefs.SetString("PW", MembershipPW.text);
         PlayerPrefs.SetString("FIND", MembershipFind.text);
-
+        GameManager.Instance.UserID = PlayerPrefs.GetString("ID");
         MembershipUI.SetActive(false);
         Debug.Log($"가입완료 id:{PlayerPrefs.GetString("ID")}, PW:{PlayerPrefs.GetString("PW")}, FIND:{PlayerPrefs.GetString("FIND")}");
     }

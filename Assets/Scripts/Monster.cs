@@ -17,9 +17,14 @@ public class Monster : MonoBehaviour
 
     private int monsterCount = 0; //필드에 있는 몬스터 수
 
+    private GameManager GameManager;
+
     void Start()
     {
         MonsterAnimator = this.GetComponent<Animator>();
+
+        GameManager = FindObjectOfType<GameManager>();
+
 
     }
 
@@ -27,6 +32,8 @@ public class Monster : MonoBehaviour
     {
         MonsterMove();
     }
+
+    
 
     private void MonsterMove()
     {

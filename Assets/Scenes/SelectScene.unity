@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &591729862
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3012,12 +3012,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bf8c42ccf61ab4aa05ad463378186d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterCountText: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  endSceneName: EndScene
   SelectedPlayer: 0
   UserID: a
   PlayerHP: 100
   PlayerExp: 1
   Coin: 0
+  coinText: {fileID: 0}
   monsterCount: 0
+  player: {fileID: 0}
+  playTimeText: {fileID: 0}
 --- !u!4 &1362048032
 Transform:
   m_ObjectHideFlags: 0

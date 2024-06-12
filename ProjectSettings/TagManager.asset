@@ -9,6 +9,9 @@ TagManager:
   - Ladder
   - Coin
   - HP
+  - Monster
+  - Speed
+  - AttackDamage
   layers:
   - Default
   - TransparentFX
