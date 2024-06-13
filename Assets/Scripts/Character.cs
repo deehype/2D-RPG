@@ -1,7 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.Jobs;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Character : MonoBehaviour
