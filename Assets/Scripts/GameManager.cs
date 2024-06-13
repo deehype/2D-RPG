@@ -5,7 +5,9 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    
+    public Text monsterCountText; // 몬스터 개수를 표시할 UI 텍스트
+    public GameObject gameOverPanel; // 게임 오버 패널 (팝업 메시지)
+    public string endSceneName = "EndScene"; // 종료씬의 이름
 
     public static GameManager Instance;
 
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     private float playTime; // 플레이 타임을 기록할 변수
     private bool isPlaying; // 게임이 진행 중인지 여부
 
+
     private GameManager gameManager;
 
     private void Awake()
@@ -40,7 +43,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         UserID = PlayerPrefs.GetString("ID");
-        DontDestroyOnLoad(Instance);
     }
 
     public GameObject SpawnPlayer(Transform spawnPos)
@@ -53,12 +55,19 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+
+        // 초기 몬스터 개수를 설정
+        gameOverPanel.SetActive(false); // 게임 오버 패널 비활성화
         playTime = 0f;
         isPlaying = true;
         StartCoroutine(UpdatePlayTime());
 
         gameManager = FindObjectOfType<GameManager>();
+    }
+
+    void OnDestroy()
+    {
+        UpdateMonsterCount();
     }
 
     private void Update()
@@ -86,7 +95,50 @@ public class GameManager : MonoBehaviour
         return string.Format("{0:0}:{1:00}", minutes, seconds);
     }
 
-   
+    public void IncrementMonsterCount()
+    {
+        monsterCount++;
+        UpdateMonsterCount();
+    }
 
-    
+    public void UpdateMonsterCount()
+    {
+        // 몬스터 개수 업데이트 (이 함수는 몬스터가 생성되거나 제거될 때 호출되어야 함)
+        GameManager.Instance.monsterCount = FindObjectsOfType<Monster>().Length;
+
+        monsterCount--;
+        if (monsterCount == 0)
+        {
+            EndGame();
+        }
+        if (GameManager.Instance.monsterCount == 0)
+        {
+            StartCoroutine(GameOver());
+        }
+    }
+
+    IEnumerator GameOver()
+    {
+        gameOverPanel.SetActive(true); // 게임 오버 패널 활성화
+        yield return new WaitForSeconds(2f); // 2초 대기
+        SceneManager.LoadScene(endSceneName); // 종료씬으로 이동
+
+    }
+
+    public void EndGame()
+    {
+        StartCoroutine(ShowEndMessageAndLoadScene());
+    }
+
+    IEnumerator ShowEndMessageAndLoadScene()
+    {
+        // 팝업 메시지 표시
+        gameOverPanel.SetActive(true);
+        // 2초 대기
+        yield return new WaitForSeconds(2);
+        // 종료 씬으로 이동
+        SceneManager.LoadScene(endSceneName);
+    }
 }
+
+

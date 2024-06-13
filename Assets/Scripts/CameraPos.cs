@@ -9,7 +9,6 @@ public class CameraPos : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -18,8 +17,7 @@ public class CameraPos : MonoBehaviour
         {
             playerObj = GameObject.FindGameObjectWithTag("Player");
         }
-        transform.position = new Vector3(playerObj.transform.position.x, playerObj.transform.position.y + 3, 
-            transform.position.z);
+        transform.position = new Vector3(playerObj.transform.position.x, playerObj.transform.position.y + 3, transform.position.z);
     }
 
 

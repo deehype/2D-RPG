@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class MonsterCounter : MonoBehaviour
 {
     public Text monsterCountText;
-    
+    public int monsterCount;
 
     void Update()
     {
@@ -14,5 +14,13 @@ public class MonsterCounter : MonoBehaviour
         int monsterCount = monsters.Length;
         // Text UI에 몬스터 개수를 표시합니다.
         monsterCountText.text = monsterCount.ToString();
+
+        // 몬스터가 0이 되면 게임 종료를 트리거합니다.
+        if (monsterCount == 0)
+        {
+            GameManager.Instance.EndGame();
+        }
     }
+
+    
 }
