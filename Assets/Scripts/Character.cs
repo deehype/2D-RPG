@@ -92,12 +92,12 @@ public class Character : MonoBehaviour
     private void Move()
     {
         //이동 GetKey는 키보드를 누른 상태마다 실행
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
@@ -108,11 +108,11 @@ public class Character : MonoBehaviour
         }
 
         //좌우 이동에 따른 반전 GetKeyDown은 키보드를 누르고 한 번 실행
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             spriteRenderer.flipX = false;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             spriteRenderer.flipX = true;
         }
