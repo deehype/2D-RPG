@@ -13,6 +13,7 @@ public class StoreManager : MonoBehaviour
     public Text ItemExplainText;
 
     private Dictionary<string, InventoryItemData> itemDictionary;
+    private string SelectedItemID;
 
     public void Start()
     {
@@ -31,10 +32,33 @@ public class StoreManager : MonoBehaviour
             ItemImage.sprite = selectedItem.itemImage;
             ItemNameText.text = selectedItem.itemName;
             ItemCoinText.text = $"({selectedItem.itemPrice:N0} Point)";
+
+            SelectedItemID = itemID;
         }
         else
         {
             Debug.LogError("Item ID not found: " + itemID);
+        }
+    }
+
+    public void Purchase()
+    {
+        InventoryItemData selectedItem = itemDictionary[SelectedItemID];
+        if (GameManager.Instance.Coin >= selectedItem.itemPrice)
+        {
+            if (BackPackManager.Instance.AddItem(selectedItem))
+            {
+                GameManager.Instance.Coin -= selectedItem.itemPrice;
+                Debug.Log("성공");
+            }
+            else
+            {
+                Debug.Log("BackPack에 빈 공간이 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.Log($"잔액이 부족합니다. 잔액 : {GameManager.Instance.Coin}");
         }
     }
 }
