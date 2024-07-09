@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 30.7
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 30.7
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -715,7 +715,8 @@ MonoBehaviour:
   CharacterImg: {fileID: 7516231912731307396}
   IdText: {fileID: 8170588662701008752}
   HpSlider: {fileID: 6109463776290626731}
-  spawnPos: {fileID: 0}
+  MpSlider: {fileID: 3364475218471127292}
+  ExpSlider: {fileID: 6618600420456317230}
 --- !u!1 &4448778634444562282
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,7 +997,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 30.7
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
