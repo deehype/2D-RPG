@@ -1,20 +1,27 @@
 using UnityEngine;
 
+[System.Serializable]
+public class ChracterStat
+{
+    public float HP = 100f; //체력
+    public float MP = 100f;
+    public float Exp = 1f; //경험치
+    public float Def = 1f;
+    public int Level = 1;
+    public int Coin = 0;
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public string CharacterName;
+    //public string CharacterName;
+    public Define.Player SelectedPlayer;
     public string UserID;
-
-    public float PlayerHP = 100f; //체력
-    public float PlayerMP = 100f;
-    public float PlayerExp = 1f; //경험치
-    public float PlayerDef = 1f;
-    public int Coin = 0;
-
+    public ChracterStat PlayerStat = new ChracterStat();
+    [HideInInspector]
     public GameObject player;
-
+    
     public Character Character
     {
         get { return player.GetComponent<Character>(); }
@@ -46,7 +53,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject SpawnPlayer(Transform spawnPos)
     {
-        GameObject playerPrefab = Resources.Load<GameObject>("Characters/" + CharacterName);
+        GameObject playerPrefab = Resources.Load<GameObject>("Characters/" + SelectedPlayer.ToString());
         player = Instantiate(playerPrefab, spawnPos.position, spawnPos.rotation);
 
         return player;

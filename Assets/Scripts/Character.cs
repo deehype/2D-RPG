@@ -1,4 +1,3 @@
-using Unity.Jobs;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -26,6 +25,7 @@ public class Character : MonoBehaviour
     public AudioClip AttackClip;
 
     private bool justAttack, justJump;
+    private bool faceRight = true;
 
     void Start()
     {
@@ -96,26 +96,27 @@ public class Character : MonoBehaviour
         {
             transform.Translate(Vector3.right * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (!faceRight) Flip();
         }
         else if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * Speed * Time.deltaTime);
             animator.SetBool("Move", true);
+            if (faceRight) Flip();
         }
         else
         {
             animator.SetBool("Move", false);
         }
+    }
 
-        //좌우 이동에 따른 반전 GetKeyDown은 키보드를 누르고 한 번 실행
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            spriteRenderer.flipX = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            spriteRenderer.flipX = true;
-        }
+    void Flip()
+    {
+        faceRight = !faceRight;
+
+        Vector2 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -183,7 +184,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                if (spriteRenderer.flipX)
+                if (!faceRight)
                 {
                     GameObject obj = Instantiate(AttackObj, transform.position, Quaternion.Euler(0, 180f, 0));
                     obj.GetComponent<Rigidbody2D>().AddForce(Vector2.left * AttackSpeed, ForceMode2D.Impulse);

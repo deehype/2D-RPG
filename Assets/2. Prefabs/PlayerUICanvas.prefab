@@ -714,6 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterImg: {fileID: 7516231912731307396}
   IdText: {fileID: 8170588662701008752}
+  LvText: {fileID: 3280440097002016521}
   HpSlider: {fileID: 6109463776290626731}
   MpSlider: {fileID: 3364475218471127292}
   ExpSlider: {fileID: 6618600420456317230}

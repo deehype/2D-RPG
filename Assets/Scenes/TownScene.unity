@@ -11013,13 +11013,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bf8c42ccf61ab4aa05ad463378186d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterName: Archer
+  SelectedPlayer: 1
   UserID: test
-  PlayerHP: 50
-  PlayerMP: 50
-  PlayerExp: 1
-  PlayerDef: 1
-  Coin: 10000
+  PlayerStat:
+    HP: 100
+    MP: 100
+    Exp: 1
+    Def: 1
+    Level: 1
+    Coin: 0
   player: {fileID: 0}
 --- !u!4 &2043717467
 Transform:
