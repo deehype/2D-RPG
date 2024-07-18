@@ -133,8 +133,6 @@ public class Character : MonoBehaviour
         }
     }
 
-
-
     private void JumpCheck()
     {
         if (isFloor)
@@ -196,6 +194,11 @@ public class Character : MonoBehaviour
                 }
             }
         }
+    }
+
+    public  void AttackAnimation()
+    {
+        animator.SetTrigger("Attack");
     }
 
     private void SetAttackObjInactive()

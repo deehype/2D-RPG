@@ -1066,6 +1066,10 @@ MonoBehaviour:
   SkillExplainUI: {fileID: 1478059345}
   SkillImage: {fileID: 642218097}
   SkillText: {fileID: 1447750505}
+  Skills:
+  - {fileID: 1250716177}
+  - {fileID: 1141908395}
+  - {fileID: 1493806313}
 --- !u!114 &244776802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11797,14 +11801,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bf8c42ccf61ab4aa05ad463378186d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SelectedPlayer: 1
+  SelectedPlayer: 0
   UserID: test
   PlayerStat:
     HP: 100
     MP: 100
     Exp: 1
     Def: 1
-    Level: 1
+    Level: 5
     Coin: 0
   player: {fileID: 0}
 --- !u!4 &2043717467
